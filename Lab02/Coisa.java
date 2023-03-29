@@ -1,5 +1,17 @@
 package lab02;
+    /**
+     * Controle Institucional da Situação Acadêmica (COISA).
+    * Representação de um sistema capaz de gerenciar o uso dos laboratórios de
+    * Ciência da Computação (LCC’s) e a vida acadêmica dos seus alunos.
+    *
+    * @author Lucas Queirós
+    */
     public class Coisa {
+        /**
+         * Ponto de início de execução da aplicação (COISA).
+         *
+         * @param args parâmetros que podem ser passados para a aplicação
+         */
         public static void main(String[] args) {
             registrarDescanso();
             System.out.println("-----");
