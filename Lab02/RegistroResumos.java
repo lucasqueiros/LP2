@@ -57,7 +57,7 @@ public class RegistroResumos {
             return;
         }
         for(int i = 0; i <= numeroDeResumos - 1; i++) {
-            if (temas[i].equals(null)){
+            if (temas[i] == null){
             temas[i] = tema;
             textos[i] = texto;
             contador ++;
@@ -102,8 +102,10 @@ public class RegistroResumos {
      */
     public boolean temResumo(String tema){
        for (String s : temas) {
-           if (s.equals(tema)){
-               return true;
+           if (s != null) {
+               if (s.equals(tema)) {
+                   return true;
+               }
            }
        }return false;
     }
