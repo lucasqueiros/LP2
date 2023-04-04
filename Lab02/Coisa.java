@@ -30,6 +30,7 @@ package lab02;
             descanso.defineHorasDescanso(26);
             descanso.defineNumeroSemanas(2);
             System.out.println(descanso.getStatusGeral());
+
             descanso.defineHorasDescanso(26);
             descanso.defineNumeroSemanas(1);
             System.out.println(descanso.getStatusGeral());

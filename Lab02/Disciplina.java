@@ -48,7 +48,7 @@ public class Disciplina {
      * @param horas quantidade de horas
      */
     public void cadastraHoras(int horas){
-        this.horas = horas;
+        this.horas += horas;
     }
 
     /**
@@ -69,6 +69,7 @@ public class Disciplina {
      * @return disciplina aprovada ou reprovada
      */
     public boolean aprovado() {
+        calculaMedia();
         if (media >= 7){
             return true;
         } else return false;
@@ -83,12 +84,15 @@ public class Disciplina {
      */
     @Override
     public String toString() {
-        return "Disciplina: " + nomeDisciplina + '\'' +
-                ", notas=" + Arrays.toString(notas) +
-                ", horas=" + horas +
-                ", media=" + media +
-                '}';
+        return nomeDisciplina + " " + horas + " " + media + " " + Arrays.toString(notas);
     }
 
+    public double calculaMedia() {
+        for (int i = 0; i < notas.length; i++) {
+            media += notas[i];
+        }
+        media = media / 4;
+        return media;
+    }
 
 }

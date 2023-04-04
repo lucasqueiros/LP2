@@ -46,28 +46,27 @@ public class RegistroResumos {
     /**
      * Adiciona um resumo ao registro com tema e texto do resumo.
      *
-     * @param tema tema do resumo.
+     * @param tema  tema do resumo.
      * @param texto texto contido no resumo.
      */
-    public void adiciona(String tema, String texto){
+    public void adiciona(String tema, String texto) {
         if (contador >= 100) {
             temas[contador - 100] = tema;
             textos[contador - 100] = texto;
-            contador ++;
+            contador++;
             return;
         }
-        for(int i = 0; i <= numeroDeResumos - 1; i++) {
-            if (temas[i] == null){
-            temas[i] = tema;
-            textos[i] = texto;
-            contador ++;
-            break;
+        for (int i = 0; i <= numeroDeResumos - 1; i++) {
+            if (temas[i] == null) {
+                temas[i] = tema;
+                textos[i] = texto;
+                contador++;
+                break;
             }
         }
-
     }
 
-    public String[] pegaResumos(){
+    public String[] pegaResumos() {
         return this.textos;
     }
 
@@ -77,10 +76,14 @@ public class RegistroResumos {
      * @return representação de quantos resumos foram registrados e seus respectivos temas.
      */
     public String imprimeResumos() {
-        return "Resumos:" + "\n" + "- " + contador + "resumo(s) cadastrado(s)" + "\n" +
-                "- " + Arrays.toString(temas);
+        StringBuilder sb = new StringBuilder();
+        for (String temas : temas) {
+            if (temas==null) {
+                continue;
+            }else sb.append(temas).append(" | ");
+        }
+        return sb.toString();
     }
-
     /**
      * Retorna o inteiro que representa o numero de resumos cadastrados.
      *
@@ -100,14 +103,15 @@ public class RegistroResumos {
      * @param tema tema do resumo.
      * @return true ou false baseado na verificação.
      */
-    public boolean temResumo(String tema){
-       for (String s : temas) {
-           if (s != null) {
-               if (s.equals(tema)) {
-                   return true;
-               }
-           }
-       }return false;
+    public boolean temResumo(String tema) {
+        for (String s : temas) {
+            if (s != null) {
+                if (s.equals(tema)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-
 }
+
