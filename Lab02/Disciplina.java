@@ -38,7 +38,6 @@ public class Disciplina {
     public Disciplina(String nomeDisciplina) {
         this.nomeDisciplina = nomeDisciplina;
         this.horas = 0;
-        this.media = 0;
         this.notas = new double[4];
     }
 
@@ -58,6 +57,7 @@ public class Disciplina {
      * @param valorNota valor da nota
      */
     public void cadastraNota(int nota, double valorNota){
+
         notas[nota - 1] = valorNota;
     }
 
@@ -69,7 +69,11 @@ public class Disciplina {
      * @return disciplina aprovada ou reprovada
      */
     public boolean aprovado() {
-        calculaMedia();
+        media = 0;
+        for (int i = 0; i < notas.length; i++) {
+            media += notas[i];
+        }
+        media = media / notas.length;
         if (media >= 7){
             return true;
         } else return false;
@@ -84,15 +88,8 @@ public class Disciplina {
      */
     @Override
     public String toString() {
-        return nomeDisciplina + " " + horas + " " + media + " " + Arrays.toString(notas);
-    }
 
-    public double calculaMedia() {
-        for (int i = 0; i < notas.length; i++) {
-            media += notas[i];
-        }
-        media = media / 4;
-        return media;
+        return nomeDisciplina + " " + horas + " " + media + " " + Arrays.toString(notas);
     }
 
 }

@@ -66,8 +66,17 @@ public class RegistroResumos {
         }
     }
 
+    /**
+     * Retorna um array de Strings que representa os temas e os resumos cadastrados.
+     *
+     * @return array listando os temas e resumos
+     */
     public String[] pegaResumos() {
-        return this.textos;
+        String[] temaresumo = new String[temas.length];
+        for (int i = 0; i < temas.length; i++) {
+            temaresumo[i] = temas[i] + ": " + textos[i];
+        }
+        return temaresumo;
     }
 
     /**
@@ -76,11 +85,22 @@ public class RegistroResumos {
      * @return representação de quantos resumos foram registrados e seus respectivos temas.
      */
     public String imprimeResumos() {
+        int contador = 0;
         StringBuilder sb = new StringBuilder();
-        for (String temas : temas) {
-            if (temas==null) {
-                continue;
-            }else sb.append(temas).append(" | ");
+        for (String s : temas) {
+            if (s != null) {
+                contador++;
+            }
+        }
+        System.out.println("- " + contador + " resumo(s) cadastrado(s)");
+        sb.append("- ");
+        for ( int i = 0; i < temas.length; i++) {
+            if (temas[i] != null) {
+                sb.append(temas[i]);
+                if (temas[i + 1] != null) {
+                    sb.append(" | ");
+                } else break;
+            }else continue;
         }
         return sb.toString();
     }
