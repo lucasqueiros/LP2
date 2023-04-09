@@ -54,6 +54,7 @@ public class Descanso {
     /**
      * Retorna o status geral após realizar um teste para saber se o aluno está cansado.
      *
+     * @return o status de descanso do aluno
      */
     public String getStatusGeral() {
         if (numeroSemanas == 0){
